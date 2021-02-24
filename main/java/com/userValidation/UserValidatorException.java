@@ -2,7 +2,7 @@ package com.userValidation;
 
 public class UserValidatorException extends Exception{
     enum ExceptionType{
-        INVALID
+        NULL , EMPTY
     }
 
     ExceptionType type;

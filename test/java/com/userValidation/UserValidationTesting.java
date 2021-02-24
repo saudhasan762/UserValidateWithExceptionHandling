@@ -5,90 +5,94 @@ import org.junit.Test;
 
 public class UserValidationTesting {
     @Test
-    public void givenFirstName_WhenProper_ShouldReturnTrue() {
-        UserValidator userValidator = new UserValidator();
-        boolean result = false;
-        try {
-            result = userValidator.validateFirstName("Saud");
-        } catch (UserValidatorException e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result);
-    }
-
-    @Test
     public void givenFirstName_WhenNotProper_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
-        try{
-           userValidator.validateFirstName("saud");
-        } catch (UserValidatorException e){
-            Assert.assertEquals(UserValidatorException.ExceptionType.INVALID, e.type);
+        try {
+            boolean result = userValidator.validateFirstName("Saud");
+            Assert.assertTrue(result);
+        } catch (UserValidatorException e) {
+            e.printStackTrace();
         }
     }
 
     @Test
-    public void givenLastName_WhenProper_ShouldReturnTrue() {
+    public void givenFirstName_WhenNull_ShouldThrowException() {
+        UserValidator userValidator = new UserValidator();
+        try{
+           boolean result = userValidator.validateFirstName(null);
+           Assert.assertTrue(result);
+        } catch (UserValidatorException e){
+            Assert.assertEquals(UserValidatorException.ExceptionType.NULL, e.type);
+        }
+    }
+
+    @Test
+    public void givenLastName_WhenNull_ShouldReturnTrue() {
         UserValidator userValidator = new UserValidator();
         boolean result = false;
         try {
-            result = userValidator.validateFirstName("Hasan");
+            result = userValidator.validateFirstName(null);
+            Assert.assertTrue(result);
         } catch (UserValidatorException e) {
-            e.printStackTrace();
+            Assert.assertEquals(UserValidatorException.ExceptionType.NULL, e.type);
         }
-        Assert.assertTrue(result);
     }
 
     @Test
     public void givenLastName_WhenNotProper_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         try{
-            userValidator.validateFirstName("hasan");
+            boolean result = userValidator.validateFirstName("Hasan");
+            Assert.assertTrue(result);
         } catch (UserValidatorException e){
-            Assert.assertEquals(UserValidatorException.ExceptionType.INVALID, e.type);
+            e.printStackTrace();
         }
     }
 
     @Test
-    public void givenEmail_WhenProper_ShouldReturnTrue() {
+    public void givenEmail_WhenNull_ShouldReturnTrue() {
         UserValidator userValidator = new UserValidator();
         boolean result = false;
         try {
-            result = userValidator.validateEmail("abc@gmail.com");
+            result = userValidator.validateEmail(null);
+            Assert.assertTrue(result);
         } catch (UserValidatorException e) {
-            e.printStackTrace();
+            Assert.assertEquals(UserValidatorException.ExceptionType.NULL, e.type);
         }
-        Assert.assertTrue(result);
+
     }
 
     @Test
     public void givenEmail_WhenNotProper_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         try {
-            userValidator.validateEmail("abc@gmail.co.inin");
+            boolean result = userValidator.validateEmail("abc@gmail.co.in");
+            Assert.assertTrue(result);
         } catch (UserValidatorException e) {
-             Assert.assertEquals(UserValidatorException.ExceptionType.INVALID, false);
+             e.printStackTrace();
         }
     }
 
     @Test
-    public void givenMobileNumber_WhenValid_ShouldReturnTrue() {
+    public void givenMobileNumber_WhenNull_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         boolean result = false;
         try {
-            result = userValidator.validateMobileNumber("91 8754692154");
+            result = userValidator.validateMobileNumber(null);
+            Assert.assertTrue(result);
         } catch (UserValidatorException e) {
-            e.printStackTrace();
+            Assert.assertEquals(UserValidatorException.ExceptionType.NULL, e.type);
         }
-        Assert.assertTrue(result);
     }
 
     @Test
     public void givenMobileNumber_WhenNotValid_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         try {
-            userValidator.validateMobileNumber("91 87546921545");
+            boolean result = userValidator.validateMobileNumber("91 8754692154");
+            Assert.assertTrue(result);
         } catch (UserValidatorException e) {
-            Assert.assertEquals(UserValidatorException.ExceptionType.INVALID, false);
+            e.printStackTrace();
         }
     }
 
@@ -97,20 +101,22 @@ public class UserValidationTesting {
         UserValidator userValidator = new UserValidator();
         boolean result = false;
         try {
-            result = userValidator.validatePassword("Saud@123");
-        } catch (UserValidatorException e) {
-            e.printStackTrace();
+            result = userValidator.validatePassword(null);
+            Assert.assertTrue(result);
+            } catch (UserValidatorException e) {
+            Assert.assertEquals(UserValidatorException.ExceptionType.NULL, e.type);
         }
-        Assert.assertTrue(result);
+
     }
 
     @Test
     public void givenPassword_WhenNotValid_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         try {
-            userValidator.validatePassword("saud@123");
+            boolean result = userValidator.validatePassword("Saud@123");
+            Assert.assertTrue(result);
         } catch (UserValidatorException e) {
-            Assert.assertEquals(UserValidatorException.ExceptionType.INVALID, false);
+            e.printStackTrace();
         }
     }
 }

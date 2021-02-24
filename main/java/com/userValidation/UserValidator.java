@@ -10,46 +10,61 @@ public class UserValidator {
 
     public boolean validateFirstName(String fName) throws UserValidatorException {
         try{
+            if(fName.isEmpty()){
+                throw new UserValidatorException(UserValidatorException.ExceptionType.EMPTY, "Enter Proper Name");
+            }
             Pattern pattern = Pattern.compile(name);
             return pattern.matcher(fName).matches();
-        } catch(Exception e){
-            throw new UserValidatorException(UserValidatorException.ExceptionType.INVALID,"Invalid First Name");
+        } catch(NullPointerException e){
+            throw new UserValidatorException(UserValidatorException.ExceptionType.NULL, "Invalid First Name");
         }
     }
 
     public boolean validateLastName(String lName) throws UserValidatorException {
         try{
+            if(lName.isEmpty()){
+                throw new UserValidatorException(UserValidatorException.ExceptionType.EMPTY, "Enter Proper Name");
+            }
             Pattern pattern = Pattern.compile(name);
             return pattern.matcher(lName).matches();
-        } catch (Exception e){
-            throw new UserValidatorException(UserValidatorException.ExceptionType.INVALID, "Invalid Last Name");
+        } catch (NullPointerException e){
+            throw new UserValidatorException(UserValidatorException.ExceptionType.NULL, "Invalid Last Name");
         }
     }
 
     public boolean validateEmail(String email) throws UserValidatorException{
         try{
+            if(email.isEmpty()){
+                throw new UserValidatorException(UserValidatorException.ExceptionType.EMPTY, "Enter Proper Name");
+            }
             Pattern pattern = Pattern.compile(e_mail);
             return pattern.matcher(email).matches();
-        } catch (Exception e){
-            throw new UserValidatorException(UserValidatorException.ExceptionType.INVALID, "Invalid Email Address");
+        } catch (NullPointerException e){
+            throw new UserValidatorException(UserValidatorException.ExceptionType.NULL, "Invalid Email Address");
         }
     }
 
     public boolean validateMobileNumber(String mNumber) throws UserValidatorException{
         try{
+            if(mNumber.isEmpty()){
+                throw new UserValidatorException(UserValidatorException.ExceptionType.EMPTY, "Enter Proper Name");
+            }
             Pattern pattern = Pattern.compile(mobNumber);
             return pattern.matcher(mNumber).matches();
-        } catch (Exception e){
-            throw new UserValidatorException(UserValidatorException.ExceptionType.INVALID, "Invalid Mobile number");
+        } catch (NullPointerException e){
+            throw new UserValidatorException(UserValidatorException.ExceptionType.NULL, "Invalid Mobile number");
         }
     }
 
     public boolean validatePassword(String pass) throws UserValidatorException{
         try{
+            if(pass.isEmpty()){
+                throw new UserValidatorException(UserValidatorException.ExceptionType.EMPTY, "Enter Proper Name");
+            }
             Pattern pattern = Pattern.compile(password);
             return  pattern.matcher(pass).matches();
-        } catch (Exception e){
-            throw new UserValidatorException(UserValidatorException.ExceptionType.INVALID, "Invalid Password");
+        } catch (NullPointerException e){
+            throw new UserValidatorException(UserValidatorException.ExceptionType.NULL, "Invalid Password");
         }
     }
 }
