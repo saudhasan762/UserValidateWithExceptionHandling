@@ -27,7 +27,7 @@ public class UserValidationTesting {
     }
 
     @Test
-    public void givenLastName_WhenNull_ShouldReturnTrue() {
+    public void givenLastName_WhenNull_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         boolean result = false;
         try {
@@ -50,7 +50,7 @@ public class UserValidationTesting {
     }
 
     @Test
-    public void givenEmail_WhenNull_ShouldReturnTrue() {
+    public void givenEmail_WhenNull_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         boolean result = false;
         try {
@@ -97,7 +97,7 @@ public class UserValidationTesting {
     }
 
     @Test
-    public void givenPassword_WhenValid_ShouldReturnTrue() {
+    public void givenPassword_WhenNull_ShouldThrowException() {
         UserValidator userValidator = new UserValidator();
         boolean result = false;
         try {
